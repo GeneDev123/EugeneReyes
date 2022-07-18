@@ -2,18 +2,34 @@
 
 <div id='primary' class='content-area'>
     <main id="main" class="site-main" role="main">
-        <article id="post-<?php the_ID(); ?>" <?php post_class();?>>
+        
+        <?php if (have_posts()): while (have_posts()): the_post();?>
             
-            <header class="entry-header">
-                <h1>index.php</h1>
-            </header>
+            <article id="post-<?php the_ID(); ?>" <?php post_class();?>>
+                <header class="entry-header">
+                    <?php the_title('<h1>', '</h1>')?>
+                </header>
 
-            <div class="entry-content">
-                <p>Lorem </P>
-            </div>
+                <div class="entry-content">
+                    <?php the_content(); ?>
+                </div>
+            </article>
+        
+        <?php endwhile; else: ?>
+            <article id="post-<?php the_ID(); ?>" <?php post_class();?>>
+                <header class="entry-header">
+                    <h1><?php esc_html__('404', 'wphierarchy');?></h1>
+                </header>
 
-        </article>
+                <div class="entry-content">
+                    <p><?php esc_html__('Sorry no content found', 'wphierarchy');?></P>
+                </div>
+            </article>        
+
+        <?php endif; ?>
     </main>
 </div>
+
+<?php get_sidebar();?>
 
 <?php get_footer(); ?>
