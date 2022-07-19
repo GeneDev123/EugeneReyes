@@ -12,7 +12,7 @@
 
         <?php endif; ?>
 
-        <p> Template: index.php </p>
+        <p> Template: single.php </p>
     </main>
 </div>
 
